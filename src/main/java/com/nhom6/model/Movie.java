@@ -1,17 +1,17 @@
 package com.nhom6.model;
 
 public class Movie {
-    private String  movieId;
+    private String movieId;
     private String movieName;
-    private String gerne;
-    private String duration;
-    private String ageLimit;
-    private String status;
+    private String genre;
+    private int duration;
+    private int ageLimit;
+    private MovieStatus status;
 
-    public Movie(String movieId, String movieName, String gerne, String duration, String ageLimit, String status) {
+    public Movie(String movieId, String movieName, String genre, int duration, int ageLimit, MovieStatus status) {
         this.movieId = movieId;
         this.movieName = movieName;
-        this.gerne = gerne;
+        this.genre = genre;
         this.duration = duration;
         this.ageLimit = ageLimit;
         this.status = status;
@@ -21,59 +21,28 @@ public class Movie {
         return movieId;
     }
 
-    public void setMovieId(String movieId) {
-        this.movieId = movieId;
-    }
-
     public String getMovieName() {
         return movieName;
     }
 
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
+    public String getGenre() {
+        return genre;
     }
 
-    public String getGerne() {
-        return gerne;
-    }
-
-    public void setGerne(String gerne) {
-        this.gerne = gerne;
-    }
-
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
-    public String getAgeLimit() {
+    public int getAgeLimit() {
         return ageLimit;
     }
 
-    public void setAgeLimit(String ageLimit) {
-        this.ageLimit = ageLimit;
-    }
-
-    public String getStatus() {
+    public MovieStatus getStatus() {
         return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     @Override
     public String toString() {
-        return "Movie{" +
-                "movieId='" + movieId + '\'' +
-                ", movieName='" + movieName + '\'' +
-                ", gerne='" + gerne + '\'' +
-                ", duration='" + duration + '\'' +
-                ", ageLimit='" + ageLimit + '\'' +
-                ", status='" + status + '\'' +
-                '}';
+        return movieId + " - " + movieName + " - " + status;
     }
 }
