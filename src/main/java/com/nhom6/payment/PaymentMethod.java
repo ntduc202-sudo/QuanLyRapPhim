@@ -1,4 +1,5 @@
 package com.nhom6.payment;
 
-public class PaymentMethod {
+public interface PaymentMethod {
+    boolean pay(double amount);
 }
