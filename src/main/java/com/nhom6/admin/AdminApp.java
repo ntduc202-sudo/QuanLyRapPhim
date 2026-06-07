@@ -9,25 +9,22 @@ public class AdminApp extends JFrame {
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(5, 1, 10, 10));
+        setLayout(new GridLayout(4, 1, 10, 10));
 
         JButton movieButton = new JButton("Quan ly phim");
-        JButton roomButton = new JButton("Quan ly phong chieu");
-        JButton showtimeButton = new JButton("Quan ly suat chieu");
+        JButton showTimeButton = new JButton("Quan ly suat chieu");
         JButton ticketButton = new JButton("Xem danh sach ve");
         JButton exitButton = new JButton("Thoat");
 
         add(movieButton);
-        add(roomButton);
-        add(showtimeButton);
+        add(showTimeButton);
         add(ticketButton);
         add(exitButton);
 
-        movieButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Goi MovieService"));
-        roomButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Goi CinemaRoomService"));
-        showtimeButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Goi ShowtimeService"));
-        ticketButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Goi BookingService/FileRepository"));
-        exitButton.addActionListener(e -> System.exit(0));
+        movieButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Chuc nang quan ly phim se lam o ngay 2"));
+        showTimeButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Chuc nang suat chieu se lam sau"));
+        ticketButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Chuc nang ve se lam sau"));
+        exitButton.addActionListener(e -> dispose());
     }
 
     public static void main(String[] args) {
