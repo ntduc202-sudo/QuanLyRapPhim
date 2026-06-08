@@ -7,11 +7,12 @@ public class Customer extends User {
     public Customer() {
     }
 
-    public Customer(String userId,
-                    String fullName,
-                    String phone,
-                    String email,
-                    CustomerType customerType) {
+    public Customer(
+            String userId,
+            String fullName,
+            String phone,
+            String email,
+            CustomerType customerType) {
 
         super(userId, fullName, phone, email);
         this.customerType = customerType;
@@ -21,14 +22,8 @@ public class Customer extends User {
         return customerType;
     }
 
-    public void setCustomerType(CustomerType customerType) {
-        this.customerType = customerType;
-    }
-
     @Override
     public String toString() {
-        return "Customer{" +
-                "customerType=" + customerType +
-                "} " + super.toString();
+        return getFullName() + " - " + customerType;
     }
 }
