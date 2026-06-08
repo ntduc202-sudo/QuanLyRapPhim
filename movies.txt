@@ -1,0 +1,3 @@
+MV001;Avengers Endgame;Action;180;13;DANG_CHIEU
+MV002;Spider Man No Way Home;Action;150;13;SAP_CHIEU
+MV003;Titanic;Romance;195;16;NGUNG_CHIEU
