@@ -11,19 +11,19 @@ public class UserApp extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new GridLayout(5, 1, 10, 10));
 
-        JButton registerButton = new JButton("Dang ky khach hang");
+        JButton registerCustomerButton = new JButton("Dang ky khach hang");
         JButton viewMovieButton = new JButton("Xem phim");
         JButton bookingButton = new JButton("Dat ve");
         JButton paymentButton = new JButton("Thanh toan");
         JButton exitButton = new JButton("Thoat");
 
-        add(registerButton);
+        add(registerCustomerButton);
         add(viewMovieButton);
         add(bookingButton);
         add(paymentButton);
         add(exitButton);
 
-        registerButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Chuc nang khach hang se lam sau"));
+        registerCustomerButton.addActionListener(e -> new RegisterCustomerFrame().setVisible(true));
         viewMovieButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Chuc nang xem phim se lam sau"));
         bookingButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Chuc nang dat ve se lam sau"));
         paymentButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Chuc nang thanh toan se lam sau"));
