@@ -1,6 +1,6 @@
 package com.nhom6.payment;
 
-public class CashPayment implements PaymentMethod {
+public class BankTransferPayment implements PaymentMethod {
 
     @Override
     public boolean pay(double amount) {
@@ -9,6 +9,6 @@ public class CashPayment implements PaymentMethod {
 
     @Override
     public String getName() {
-        return "Tien Mat";
+        return "Chuyen Khoan";
     }
 }
