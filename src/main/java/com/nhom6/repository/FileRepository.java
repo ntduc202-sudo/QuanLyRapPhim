@@ -9,6 +9,7 @@ import java.util.List;
 public class FileRepository {
     private static final String MOVIE_FILE = "movies.txt";
     private static final String CUSTOMER_FILE = "customers.txt";
+    private static final String SHOWTIME_FILE = "showtimes.txt";
 
     public List<Movie> loadMovies() {
         List<Movie> movies = new ArrayList<>();
@@ -89,6 +90,51 @@ public class FileRepository {
             writer.write("\n");
         } catch (IOException e) {
             System.out.println("Loi khi luu khach hang");
+        }
+    }
+
+    public List<ShowTime> loadShowTimes() {
+        List<ShowTime> showTimes = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(SHOWTIME_FILE))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] p = line.split(";");
+
+                if (p.length == 7) {
+                    showTimes.add(new ShowTime(
+                            p[0],
+                            p[1],
+                            p[2],
+                            p[3],
+                            p[4],
+                            p[5],
+                            Double.parseDouble(p[6])
+                    ));
+                }
+            }
+        } catch (IOException e) {
+            return showTimes;
+        }
+
+        return showTimes;
+    }
+
+    public void saveAllShowTimes(List<ShowTime> showTimes) {
+        try (FileWriter writer = new FileWriter(SHOWTIME_FILE, false)) {
+            for (ShowTime showTime : showTimes) {
+                writer.write(showTime.getShowTimeId() + ";" +
+                        showTime.getMovieId() + ";" +
+                        showTime.getShowDate() + ";" +
+                        showTime.getShowTime() + ";" +
+                        showTime.getEndTime() + ";" +
+                        showTime.getRoom() + ";" +
+                        showTime.getBasePrice());
+                writer.write("\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Loi khi luu suat chieu");
         }
     }
 }
