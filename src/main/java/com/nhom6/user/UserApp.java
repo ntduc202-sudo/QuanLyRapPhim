@@ -21,6 +21,7 @@ public class UserApp extends JFrame {
         add(registerCustomerButton);
         add(viewMovieButton);
         add(bookingButton);
+        add(ticketButton);
         add(paymentButton);
         add(exitButton);
 
