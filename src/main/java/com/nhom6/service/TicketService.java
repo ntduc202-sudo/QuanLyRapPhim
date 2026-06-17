@@ -19,4 +19,8 @@ public class TicketService {
     public void saveAllTicketLines(List<String> tickets) {
         fileRepository.saveAllTicketLines(tickets);
     }
+
+    public String getTicketsAsText() {
+        return fileRepository.loadTicketsAsText();
+    }
 }
