@@ -66,20 +66,6 @@ public class FileRepository {
         }
     }
 
-    public String loadMoviesAsText() {
-        StringBuilder result = new StringBuilder();
-
-        for (Movie movie : loadMovies()) {
-            result.append(movie).append("\n");
-        }
-
-        if (result.isEmpty()) {
-            return "Chua co phim nao";
-        }
-
-        return result.toString();
-    }
-
     public void saveTicket(Ticket ticket) {
         try (FileWriter writer = new FileWriter(TICKET_FILE, true)) {
             writer.write(ticket.toFileString());

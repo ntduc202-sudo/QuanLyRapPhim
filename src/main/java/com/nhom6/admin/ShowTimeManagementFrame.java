@@ -125,10 +125,10 @@ public class ShowTimeManagementFrame extends JFrame {
 
     private boolean validateForm() {
         return ValidationUtils.requireTextField(this, showTimeIdField, "ma suat chieu") &&
-             //  ValidationUtils.requireComboBox(this, movieBox, "phim") &&
+                ValidationUtils.requireComboBox(this, movieBox, "phim") &&
                 ValidationUtils.requireTextField(this, showDateField, "ngay chieu") &&
                 ValidationUtils.requireTextField(this, startTimeField, "gio bat dau") &&
-           //     ValidationUtils.requireComboBox(this, roomBox, "phong") &&
+                ValidationUtils.requireComboBox(this, roomBox, "phong") &&
                 ValidationUtils.requireTextField(this, basePriceField, "gia ve co ban");
     }
 
