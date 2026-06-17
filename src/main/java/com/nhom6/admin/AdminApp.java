@@ -23,7 +23,7 @@ public class AdminApp extends JFrame {
 
         movieButton.addActionListener(e -> new MovieManagementFrame().setVisible(true));
         showTimeButton.addActionListener(e -> new ShowTimeManagementFrame().setVisible(true)) ;
-        ticketButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Chuc nang ve se lam sau"));
+        ticketButton.addActionListener(e -> new TicketManagementFrame().setVisible(true));
         exitButton.addActionListener(e -> dispose());
     }
 
