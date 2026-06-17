@@ -18,18 +18,22 @@ public class User {
     }
 
     public String getUserId() {
+
         return userId;
     }
 
     public String getFullName() {
+
         return fullName;
     }
 
     public String getPhone() {
+
         return phone;
     }
 
     public String getEmail() {
+
         return email;
     }
 
