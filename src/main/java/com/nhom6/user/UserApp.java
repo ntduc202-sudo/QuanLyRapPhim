@@ -24,9 +24,9 @@ public class UserApp extends JFrame {
         add(exitButton);
 
         registerCustomerButton.addActionListener(e -> new RegisterCustomerFrame().setVisible(true));
-        viewMovieButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Chuc nang xem phim se lam sau"));
-        bookingButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Chuc nang dat ve se lam sau"));
-        paymentButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Chuc nang thanh toan se lam sau"));
+        viewMovieButton.addActionListener(e -> new SearchMovieFrame().setVisible(true));
+        bookingButton.addActionListener(e -> new BookingFrame().setVisible(true));
+        paymentButton.addActionListener(e -> new PaymentFrame().setVisible(true));
         exitButton.addActionListener(e -> dispose());
     }
 
