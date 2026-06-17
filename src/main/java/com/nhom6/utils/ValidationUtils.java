@@ -15,4 +15,13 @@ public class ValidationUtils {
         }
         return true;
     }
+
+    public static boolean requireComboBox(JFrame frame, JComboBox<?> comboBox, String fieldName) {
+        if (comboBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(frame, "Vui long chon " + fieldName);
+            comboBox.requestFocus();
+            return false;
+        }
+        return true;
+    }
 }
