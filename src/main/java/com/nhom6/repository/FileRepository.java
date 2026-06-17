@@ -10,6 +10,7 @@ public class FileRepository {
     private static final String MOVIE_FILE = "movies.txt";
     private static final String CUSTOMER_FILE = "customers.txt";
     private static final String SHOWTIME_FILE = "showtimes.txt";
+    private static final String TICKET_FILE = "tickets.txt";
 
     public List<Movie> loadMovies() {
         List<Movie> movies = new ArrayList<>();
@@ -136,5 +137,52 @@ public class FileRepository {
         } catch (IOException e) {
             System.out.println("Loi khi luu suat chieu");
         }
+    }
+    public void saveTicket(Ticket ticket) {
+        try (FileWriter writer = new FileWriter(TICKET_FILE, true)) {
+            writer.write(ticket.toFileString());
+            writer.write("\n");
+        } catch (IOException e) {
+            System.out.println("Loi khi luu ve");
+        }
+    }
+
+    public List<String> loadTicketLines() {
+        List<String> tickets = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(TICKET_FILE))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                tickets.add(line);
+            }
+        } catch (IOException e) {
+            return tickets;
+        }
+
+        return tickets;
+    }
+
+    public void saveAllTicketLines(List<String> tickets) {
+        try (FileWriter writer = new FileWriter(TICKET_FILE, false)) {
+            for (String ticket : tickets) {
+                writer.write(ticket);
+                writer.write("\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Loi khi ghi lai danh sach ve");
+        }
+    }
+
+    public boolean isSeatBooked(String showTimeId, String seatNumber) {
+        for (String ticket : loadTicketLines()) {
+            String[] p = ticket.split(";");
+
+            if (p.length == 11 && p[6].equalsIgnoreCase(showTimeId) && p[8].equalsIgnoreCase(seatNumber)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
