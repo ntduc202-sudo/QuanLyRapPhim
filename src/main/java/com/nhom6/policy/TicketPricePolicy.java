@@ -1,4 +1,7 @@
 package com.nhom6.policy;
 
-public class TicketPricePolicy {
+public interface TicketPricePolicy {
+
+    double calculatePrice(double basePrice);
+
 }
