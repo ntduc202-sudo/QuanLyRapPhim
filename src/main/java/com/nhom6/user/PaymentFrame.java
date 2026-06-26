@@ -1,7 +1,7 @@
 package com.nhom6.user;
 
 import com.nhom6.payment.*;
-import com.nhom6.service.PaymentService;
+import com.nhom6.service.*;
 
 import javax.swing.*;
 import java.awt.*;
