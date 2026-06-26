@@ -1,9 +1,14 @@
 package com.nhom6.service;
 
 import com.nhom6.model.*;
+import com.nhom6.policy.*;
 import com.nhom6.utils.IdGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BookingService {
+
     public Ticket bookTicket(Customer customer, Movie movie, ShowTime showTime, Seat seat) {
         if (customer == null || movie == null || showTime == null || seat == null) {
             return null;
@@ -13,9 +18,19 @@ public class BookingService {
             return null;
         }
 
-        double finalPrice = calculateFinalPrice(showTime.getBasePrice(), seat.getSeatType(), customer.getCustomerType());
+        if (seat.getSeatStatus() == SeatStatus.BOOKED) {
+            return null;
+        }
 
-        return new Ticket(
+        double finalPrice = calculateFinalPrice(
+                showTime.getBasePrice(),
+                seat.getSeatType(),
+                customer.getCustomerType()
+        );
+
+        seat.setSeatStatus(SeatStatus.BOOKED);
+
+        Ticket ticket = new Ticket(
                 IdGenerator.generateTicketId(),
                 customer,
                 movie,
@@ -24,9 +39,14 @@ public class BookingService {
                 finalPrice,
                 PaymentStatus.UNPAID
         );
+        return ticket;
     }
 
-    private double calculateFinalPrice(double basePrice, SeatType seatType, CustomerType customerType) {
+    private double calculateFinalPrice(
+            double basePrice,
+            SeatType seatType,
+            CustomerType customerType) {
+
         double price = basePrice;
 
         if (seatType == SeatType.VIP) {
@@ -37,14 +57,22 @@ public class BookingService {
             price += 50000;
         }
 
-        if (customerType == CustomerType.STUDENT) {
-            price *= 0.9;
-        }
+        TicketPricePolicy policy = getPolicy(customerType);
 
-        if (customerType == CustomerType.VIP) {
-            price *= 0.8;
-        }
+        return policy.calculatePrice(price);
+    }
+    private TicketPricePolicy getPolicy(CustomerType customerType) {
 
-        return price;
+        switch (customerType) {
+
+            case STUDENT:
+                return new StudentPricePolicy();
+
+            case VIP:
+                return new VipPricePolicy();
+
+            default:
+                return new NormalCustomerPricePolicy();
+        }
     }
 }
