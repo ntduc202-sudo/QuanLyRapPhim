@@ -11,4 +11,9 @@ public class BankTransferPayment implements PaymentMethod {
     public String getName() {
         return "Chuyen Khoan";
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

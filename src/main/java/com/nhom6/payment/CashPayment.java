@@ -11,4 +11,9 @@ public class CashPayment implements PaymentMethod {
     public String getName() {
         return "Tien Mat";
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

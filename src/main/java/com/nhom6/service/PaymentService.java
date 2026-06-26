@@ -1,28 +1,54 @@
 package com.nhom6.service;
 
-import com.nhom6.model.Payment;
 import com.nhom6.model.PaymentStatus;
 import com.nhom6.payment.PaymentMethod;
 
+import java.util.List;
+
 public class PaymentService {
-    public boolean processPayment(Payment payment, PaymentMethod paymentMethod) {
-        if (payment == null || paymentMethod == null) {
+    private TicketService ticketService = new TicketService();
+
+    public boolean payTicket(List<String> tickets, int index, PaymentMethod paymentMethod) {
+        if (tickets == null || paymentMethod == null) {
             return false;
         }
 
-        if (payment.getAmount() <= 0) {
-            payment.setPaymentStatus(PaymentStatus.FAILED);
+        if (index < 0 || index >= tickets.size()) {
             return false;
         }
 
-        boolean success = paymentMethod.pay(payment.getAmount());
+        String[] p = tickets.get(index).split(";");
 
-        if (success) {
-            payment.setPaymentStatus(PaymentStatus.PAID);
-        } else {
-            payment.setPaymentStatus(PaymentStatus.FAILED);
+        if (p.length != 11) {
+            return false;
         }
 
-        return success;
+        if (p[10].equalsIgnoreCase(PaymentStatus.PAID.name())) {
+            return false;
+        }
+
+        double amount;
+
+        try {
+            amount = Double.parseDouble(p[9]);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+        if (amount <= 0) {
+            return false;
+        }
+
+        boolean success = paymentMethod.pay(amount);
+
+        if (!success) {
+            return false;
+        }
+
+        p[10] = PaymentStatus.PAID.name();
+        tickets.set(index, String.join(";", p));
+        ticketService.saveAllTicketLines(tickets);
+
+        return true;
     }
 }
