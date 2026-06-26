@@ -11,4 +11,9 @@ public class EWalletPayment implements PaymentMethod {
     public String getName() {
         return "Vi Dien Tu";
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }
