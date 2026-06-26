@@ -17,15 +17,6 @@ public class FileRepository {
     private static final String SHOWTIME_FILE = "showtimes.txt";
     private static final String CUSTOMER_FILE = "customers.txt";
 
-    public void saveMovie(Movie movie) {
-        try (FileWriter writer = new FileWriter(MOVIE_FILE, true)) {
-            writer.write(movie.getMovieId() + ";" + movie.getMovieName() + ";" + movie.getGenre() + ";" + movie.getDuration() + ";" + movie.getAgeLimit() + ";" + movie.getStatus());
-            writer.write("\n");
-        } catch (IOException e) {
-            System.out.println("Loi khi luu phim vao file");
-        }
-    }
-
     public List<Movie> loadMovies() {
         List<Movie> movies = new ArrayList<>();
 
