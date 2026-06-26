@@ -20,7 +20,4 @@ public class TicketService {
         fileRepository.saveAllTicketLines(tickets);
     }
 
-    public String getTicketsAsText() {
-        return fileRepository.loadTicketsAsText();
-    }
 }
