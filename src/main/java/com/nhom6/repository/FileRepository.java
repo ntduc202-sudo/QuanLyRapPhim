@@ -74,26 +74,7 @@ public class FileRepository {
             System.out.println("Loi khi luu ve vao file");
         }
     }
-
-    public String loadTicketsAsText() {
-        StringBuilder result = new StringBuilder();
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(TICKET_FILE))) {
-            String line;
-
-            while ((line = reader.readLine()) != null) {
-                result.append(line).append("\n");
-            }
-        } catch (IOException e) {
-            return "Chua co ve nao duoc dat";
-        }
-
-        if (result.isEmpty()) {
-            return "Chua co ve nao duoc dat";
-        }
-
-        return result.toString();
-    }
+    
     public List<ShowTime> loadShowTimes() {
         List<ShowTime> showTimes = new ArrayList<>();
 
